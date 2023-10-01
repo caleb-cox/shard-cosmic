@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css?family=Nova+Mono");
+
+:root {
+  --color-azure: #0080ff;
+  --color-chartreuse: #80ff00;
+  --color-rose: #ff0080;
+  --color-black: #000000;
+  --color-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  font-family: "Nova Mono", monospace;
+  color: var(--color-white);
+}
