@@ -1,31 +1,20 @@
 <script setup>
-const rollD6 = () => {
-  return Math.ceil(Math.random() * 6);
-};
+const props = defineProps({
+  body: Number,
+  mind: Number,
+  luck: Number,
+});
 
-const cardObject = {
-  body: {
-    roll: [rollD6(), rollD6()],
-  },
-  mind: {
-    roll: [rollD6(), rollD6()],
-  },
-  luck: {
-    roll: [rollD6(), rollD6()],
-  },
-};
-
-const formatRoll = (dice) => {
-  const result = `${dice.roll[0] - dice.roll[1]}`;
-  return result.padStart(2, "+");
+const formatRoll = (result) => {
+  return result.toString().padStart(2, "+");
 };
 </script>
 
 <template>
   <div class="card">
-    <div class="body stat">{{ formatRoll(cardObject.body) }}</div>
-    <div class="mind stat">{{ formatRoll(cardObject.mind) }}</div>
-    <div class="luck stat">{{ formatRoll(cardObject.luck) }}</div>
+    <div class="stat body">{{ formatRoll(props.body) }}</div>
+    <div class="stat mind">{{ formatRoll(props.mind) }}</div>
+    <div class="stat luck">{{ formatRoll(props.luck) }}</div>
   </div>
 </template>
 
@@ -47,27 +36,27 @@ const formatRoll = (dice) => {
   margin-left: 1rem;
 }
 
-.body.stat {
+.body {
   color: var(--color-rose);
 }
 
-.body.stat::after {
+.body::after {
   content: "\25A0";
 }
 
-.mind.stat {
+.mind {
   color: var(--color-azure);
 }
 
-.mind.stat::after {
+.mind::after {
   content: "\25B2";
 }
 
-.luck.stat {
+.luck {
   color: var(--color-chartreuse);
 }
 
-.luck.stat::after {
+.luck::after {
   content: "\25CF";
 }
 </style>
