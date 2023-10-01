@@ -1,6 +1,6 @@
 {
-  "name": "shard_deck",
-  "version": "0.0.0",
+  "name": "shard-cosmic",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite",
