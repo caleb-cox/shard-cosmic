@@ -1,9 +1,7 @@
 <script setup>
-const props = defineProps({
-  body: Number,
-  mind: Number,
-  luck: Number,
-});
+defineProps(["body", "mind", "luck"]);
+
+defineEmits(["deleteCard"]);
 
 const formatRoll = (result) => {
   return result.toString().padStart(2, "+");
@@ -11,18 +9,22 @@ const formatRoll = (result) => {
 </script>
 
 <template>
-  <div class="card">
-    <div class="stat body">{{ formatRoll(props.body) }}</div>
-    <div class="stat mind">{{ formatRoll(props.mind) }}</div>
-    <div class="stat luck">{{ formatRoll(props.luck) }}</div>
+  <div class="card" @click="$emit('deleteCard')">
+    <div class="stat body">{{ formatRoll(body) }}</div>
+    <div class="stat mind">{{ formatRoll(mind) }}</div>
+    <div class="stat luck">{{ formatRoll(luck) }}</div>
   </div>
 </template>
 
 <style scoped>
 .card {
+  cursor: pointer;
   border: 0.125rem solid var(--color-white);
-  padding: 3rem;
+  height: 17.5rem;
+  width: 12.5rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 1rem;
 }

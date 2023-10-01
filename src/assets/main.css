@@ -26,3 +26,11 @@ body {
   font-family: "Nova Mono", monospace;
   color: var(--color-white);
 }
+
+button {
+  cursor: pointer;
+  border: 0.125rem solid var(--color-white);
+  background: inherit;
+  font: inherit;
+  color: inherit;
+}
