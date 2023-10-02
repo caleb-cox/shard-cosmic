@@ -9,7 +9,7 @@ const formatRoll = (result) => {
 </script>
 
 <template>
-  <div class="card" @click="$emit('deleteCard')">
+  <div class="card">
     <div class="stat body">{{ formatRoll(body) }}</div>
     <div class="stat mind">{{ formatRoll(mind) }}</div>
     <div class="stat luck">{{ formatRoll(luck) }}</div>
