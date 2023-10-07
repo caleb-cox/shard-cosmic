@@ -20,6 +20,7 @@ defineEmits(["deleteCard"]);
 .card {
   cursor: pointer;
   border: 0.25rem solid var(--color-white);
+  border-radius: 1rem;
   height: 24rem;
   width: 24rem;
   position: relative;

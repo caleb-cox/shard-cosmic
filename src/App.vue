@@ -22,6 +22,6 @@ resetCard();
 
 <style scoped>
 h1 {
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 1rem;
 }
 </style>
