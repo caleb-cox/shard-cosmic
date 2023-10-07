@@ -19,67 +19,67 @@ defineEmits(["deleteCard"]);
 <style scoped>
 .card {
   cursor: pointer;
-  border: 0.125rem solid var(--color-white);
-  height: 21.5rem;
-  width: 21.5rem;
+  border: 0.25rem solid var(--color-white);
+  height: 24rem;
+  width: 24rem;
   position: relative;
+  --radius: 4rem;
 }
 
 .stat {
   position: absolute;
   transform: translate(-50%, -50%);
-  border: 1px solid var(--color-white);
+  border: 0.125rem solid var(--color-white);
+  border-radius: 50%;
   width: 2em;
   height: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  --radius: 3.5rem;
 }
 
 .red {
   left: 50%;
   top: calc(50% - calc(var(--radius) * 2));
-  color: var(--color-red);
   border-color: var(--color-red);
+  color: var(--color-red);
 }
 
 .yellow {
   left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
-  color: var(--color-yellow);
   border-color: var(--color-yellow);
+  color: var(--color-yellow);
   font-size: 2rem;
 }
 
 .green {
   left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
-  color: var(--color-green);
   border-color: var(--color-green);
+  color: var(--color-green);
 }
 
 .cyan {
   left: 50%;
   top: calc(50% + calc(var(--radius) * 2));
-  color: var(--color-cyan);
   border-color: var(--color-cyan);
+  color: var(--color-cyan);
   font-size: 2rem;
 }
 
 .blue {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
-  color: var(--color-blue);
   border-color: var(--color-blue);
+  color: var(--color-blue);
 }
 
 .magenta {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
-  color: var(--color-magenta);
   border-color: var(--color-magenta);
+  color: var(--color-magenta);
   font-size: 2rem;
 }
 
