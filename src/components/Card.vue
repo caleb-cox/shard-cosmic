@@ -7,11 +7,11 @@ defineEmits(["deleteCard"]);
 <template>
   <div class="card">
     <div class="stat red">{{ rolls[0] }}</div>
-    <div class="stat yellow">{{ rolls[0] + rolls[1] }}</div>
     <div class="stat green">{{ rolls[1] }}</div>
-    <div class="stat cyan">{{ rolls[1] + rolls[2] }}</div>
     <div class="stat blue">{{ rolls[2] }}</div>
+    <div class="stat yellow">{{ rolls[0] + rolls[1] }}</div>
     <div class="stat magenta">{{ rolls[0] + rolls[2] }}</div>
+    <div class="stat cyan">{{ rolls[1] + rolls[2] }}</div>
     <div class="stat white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
   </div>
 </template>
@@ -19,6 +19,7 @@ defineEmits(["deleteCard"]);
 <style scoped>
 .card {
   cursor: pointer;
+  user-select: none;
   border: 0.25rem solid var(--color-white);
   border-radius: 1rem;
   height: 24rem;
@@ -39,19 +40,27 @@ defineEmits(["deleteCard"]);
   justify-content: center;
 }
 
+.red,
+.green,
+.blue {
+  font-size: 1.25em;
+}
+
+.yellow,
+.magenta,
+.cyan {
+  font-size: 2em;
+}
+
+.white {
+  font-size: 4em;
+}
+
 .red {
   left: 50%;
   top: calc(50% - calc(var(--radius) * 2));
   border-color: var(--color-red);
   color: var(--color-red);
-}
-
-.yellow {
-  left: calc(50% - calc(var(--radius) * 1.732));
-  top: calc(50% - var(--radius));
-  border-color: var(--color-yellow);
-  color: var(--color-yellow);
-  font-size: 2rem;
 }
 
 .green {
@@ -61,14 +70,6 @@ defineEmits(["deleteCard"]);
   color: var(--color-green);
 }
 
-.cyan {
-  left: 50%;
-  top: calc(50% + calc(var(--radius) * 2));
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
-  font-size: 2rem;
-}
-
 .blue {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
@@ -76,17 +77,31 @@ defineEmits(["deleteCard"]);
   color: var(--color-blue);
 }
 
+.yellow {
+  left: calc(50% - calc(var(--radius) * 1.732));
+  top: calc(50% - var(--radius));
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
+}
+
 .magenta {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
   border-color: var(--color-magenta);
   color: var(--color-magenta);
-  font-size: 2rem;
+}
+
+.cyan {
+  left: 50%;
+  top: calc(50% + calc(var(--radius) * 2));
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
 }
 
 .white {
   left: 50%;
   top: 50%;
-  font-size: 4rem;
+  border-color: var(--color-white);
+  color: var(--color-white);
 }
 </style>
