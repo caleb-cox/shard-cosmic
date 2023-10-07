@@ -6,13 +6,13 @@ defineEmits(["deleteCard"]);
 
 <template>
   <div class="card">
-    <div class="stat red">{{ rolls[0] }}</div>
-    <div class="stat green">{{ rolls[1] }}</div>
-    <div class="stat blue">{{ rolls[2] }}</div>
-    <div class="stat yellow">{{ rolls[0] + rolls[1] }}</div>
-    <div class="stat magenta">{{ rolls[0] + rolls[2] }}</div>
-    <div class="stat cyan">{{ rolls[1] + rolls[2] }}</div>
-    <div class="stat white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
+    <div class="node red">{{ rolls[0] }}</div>
+    <div class="node green">{{ rolls[1] }}</div>
+    <div class="node blue">{{ rolls[2] }}</div>
+    <div class="node cyan">{{ rolls[1] + rolls[2] }}</div>
+    <div class="node magenta">{{ rolls[0] + rolls[2] }}</div>
+    <div class="node yellow">{{ rolls[0] + rolls[1] }}</div>
+    <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ defineEmits(["deleteCard"]);
   --radius: 4rem;
 }
 
-.stat {
+.node {
   position: absolute;
   transform: translate(-50%, -50%);
   border: 0.125rem solid var(--color-white);
@@ -77,11 +77,11 @@ defineEmits(["deleteCard"]);
   color: var(--color-blue);
 }
 
-.yellow {
-  left: calc(50% - calc(var(--radius) * 1.732));
-  top: calc(50% - var(--radius));
-  border-color: var(--color-yellow);
-  color: var(--color-yellow);
+.cyan {
+  left: 50%;
+  top: calc(50% + calc(var(--radius) * 2));
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
 }
 
 .magenta {
@@ -91,11 +91,11 @@ defineEmits(["deleteCard"]);
   color: var(--color-magenta);
 }
 
-.cyan {
-  left: 50%;
-  top: calc(50% + calc(var(--radius) * 2));
-  border-color: var(--color-cyan);
-  color: var(--color-cyan);
+.yellow {
+  left: calc(50% - calc(var(--radius) * 1.732));
+  top: calc(50% - var(--radius));
+  border-color: var(--color-yellow);
+  color: var(--color-yellow);
 }
 
 .white {
@@ -103,5 +103,73 @@ defineEmits(["deleteCard"]);
   top: 50%;
   border-color: var(--color-white);
   color: var(--color-white);
+}
+
+.red::after,
+.green::after,
+.blue::after {
+  position: absolute;
+  height: 0.125rem;
+  width: 2.875rem;
+  --translate: 2.625rem;
+  content: "";
+}
+
+.red::after {
+  transform: rotate(90deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-red), var(--color-white));
+}
+
+.green::after {
+  transform: rotate(330deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-green), var(--color-white));
+}
+
+.blue::after {
+  transform: rotate(210deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-blue), var(--color-white));
+}
+
+.cyan::before,
+.cyan::after,
+.magenta::before,
+.magenta::after,
+.yellow::before,
+.yellow::after {
+  position: absolute;
+  height: 0.125rem;
+  width: 4.875rem;
+  --translate: 4.375rem;
+  content: "";
+}
+
+.cyan::before {
+  transform: rotate(210deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-green));
+}
+
+.cyan::after {
+  transform: rotate(330deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-blue));
+}
+
+.magenta::before {
+  transform: rotate(90deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-magenta), var(--color-blue));
+}
+
+.magenta::after {
+  transform: rotate(210deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-magenta), var(--color-red));
+}
+
+.yellow::before {
+  transform: rotate(330deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-yellow), var(--color-red));
+}
+
+.yellow::after {
+  transform: rotate(90deg) translate(var(--translate));
+  background: linear-gradient(90deg, var(--color-yellow), var(--color-green));
 }
 </style>
