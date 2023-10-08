@@ -1,17 +1,20 @@
 <script setup>
 defineProps(["rolls"]);
-
 defineEmits(["deleteCard"]);
+
+const signNumber = (number) => {
+  return number.toString().padStart(2, "+");
+};
 </script>
 
 <template>
   <div class="card">
     <div class="node red">{{ rolls[0] }}</div>
-    <div class="node green">{{ rolls[1] }}</div>
-    <div class="node blue">{{ rolls[2] }}</div>
-    <div class="node cyan">{{ rolls[1] + rolls[2] }}</div>
-    <div class="node magenta">{{ rolls[0] + rolls[2] }}</div>
-    <div class="node yellow">{{ rolls[0] + rolls[1] }}</div>
+    <div class="node yellow">{{ signNumber(rolls[2] - rolls[0]) }}</div>
+    <div class="node green">{{ rolls[2] }}</div>
+    <div class="node cyan">{{ signNumber(rolls[1] - rolls[2]) }}</div>
+    <div class="node blue">{{ rolls[1] }}</div>
+    <div class="node magenta">{{ signNumber(rolls[0] - rolls[1]) }}</div>
     <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
   </div>
 </template>
