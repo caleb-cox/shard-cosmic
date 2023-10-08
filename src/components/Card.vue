@@ -9,11 +9,23 @@ const signNumber = (number) => {
 
 <template>
   <div class="card">
-    <div class="node red">{{ rolls[0] }}</div>
+    <div class="node red">
+      <div class="face">
+        <div v-for="_ in rolls[0]" class="pip"></div>
+      </div>
+    </div>
     <div class="node yellow">{{ signNumber(rolls[2] - rolls[0]) }}</div>
-    <div class="node green">{{ rolls[2] }}</div>
+    <div class="node green">
+      <div class="face">
+        <div v-for="_ in rolls[2]" class="pip"></div>
+      </div>
+    </div>
     <div class="node cyan">{{ signNumber(rolls[1] - rolls[2]) }}</div>
-    <div class="node blue">{{ rolls[1] }}</div>
+    <div class="node blue">
+      <div class="face">
+        <div v-for="_ in rolls[1]" class="pip"></div>
+      </div>
+    </div>
     <div class="node magenta">{{ signNumber(rolls[0] - rolls[1]) }}</div>
     <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
   </div>
@@ -25,10 +37,10 @@ const signNumber = (number) => {
   user-select: none;
   border: 0.25rem solid var(--color-white);
   border-radius: 1rem;
-  height: 24rem;
-  width: 24rem;
+  height: 25rem;
+  width: 25rem;
   position: relative;
-  --radius: 4rem;
+  --radius: 4.25rem;
 }
 
 .node {
@@ -43,41 +55,91 @@ const signNumber = (number) => {
   justify-content: center;
 }
 
+.face {
+  display: grid;
+  gap: 0.125rem;
+  grid-template-columns: repeat(3, 0.375rem);
+  grid-template-rows: repeat(3, 0.375rem);
+  grid-template-areas:
+    "a . c"
+    "e g f"
+    "d . b";
+}
+
+.pip {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.pip:nth-child(2) {
+  grid-area: b;
+}
+
+.pip:nth-child(3) {
+  grid-area: c;
+}
+
+.pip:nth-child(4) {
+  grid-area: d;
+}
+
+.pip:nth-child(5) {
+  grid-area: e;
+}
+
+.pip:nth-child(6) {
+  grid-area: f;
+}
+
+.pip:nth-child(odd):last-child {
+  grid-area: g;
+}
+
 .red,
 .green,
 .blue {
-  font-size: 1.25em;
+  font-size: 1.5rem;
 }
 
 .yellow,
 .magenta,
 .cyan {
-  font-size: 2em;
+  font-size: 2.25rem;
 }
 
 .white {
-  font-size: 4em;
+  font-size: 4.25rem;
 }
 
 .red {
   left: 50%;
   top: calc(50% - calc(var(--radius) * 2));
   border-color: var(--color-red);
-  color: var(--color-red);
+}
+
+.red .pip {
+  background-color: var(--color-red);
 }
 
 .green {
   left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-green);
-  color: var(--color-green);
+}
+
+.green .pip {
+  background-color: var(--color-green);
 }
 
 .blue {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-blue);
-  color: var(--color-blue);
+}
+
+.blue .pip {
+  background-color: var(--color-blue);
 }
 
 .cyan {
@@ -114,7 +176,7 @@ const signNumber = (number) => {
   position: absolute;
   height: 0.125rem;
   width: 2.875rem;
-  --translate: 2.625rem;
+  --translate: 2.875rem;
   content: "";
 }
 
@@ -142,7 +204,7 @@ const signNumber = (number) => {
   position: absolute;
   height: 0.125rem;
   width: 4.875rem;
-  --translate: 4.375rem;
+  --translate: 4.625rem;
   content: "";
 }
 
