@@ -9,6 +9,7 @@ const signNumber = (number) => {
 
 <template>
   <div class="card">
+    <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
     <div class="node red">
       <div class="face">
         <div v-for="_ in rolls[0]" class="pip"></div>
@@ -27,7 +28,6 @@ const signNumber = (number) => {
       </div>
     </div>
     <div class="node magenta">{{ signNumber(rolls[2] - rolls[0]) }}</div>
-    <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
   </div>
 </template>
 
@@ -113,8 +113,8 @@ const signNumber = (number) => {
 }
 
 .red {
-  left: 50%;
-  top: calc(50% - calc(var(--radius) * 2));
+  left: calc(50% - calc(var(--radius) * 1.732));
+  top: calc(50% + var(--radius));
   border-color: var(--color-red);
 }
 
@@ -123,8 +123,8 @@ const signNumber = (number) => {
 }
 
 .green {
-  left: calc(50% + calc(var(--radius) * 1.732));
-  top: calc(50% + var(--radius));
+  left: 50%;
+  top: calc(50% - calc(var(--radius) * 2));
   border-color: var(--color-green);
 }
 
@@ -133,7 +133,7 @@ const signNumber = (number) => {
 }
 
 .blue {
-  left: calc(50% - calc(var(--radius) * 1.732));
+  left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-blue);
 }
@@ -143,21 +143,21 @@ const signNumber = (number) => {
 }
 
 .cyan {
-  left: 50%;
-  top: calc(50% + calc(var(--radius) * 2));
+  left: calc(50% + calc(var(--radius) * 1.732));
+  top: calc(50% - var(--radius));
   border-color: var(--color-cyan);
   color: var(--color-cyan);
 }
 
 .magenta {
-  left: calc(50% - calc(var(--radius) * 1.732));
-  top: calc(50% - var(--radius));
+  left: 50%;
+  top: calc(50% + calc(var(--radius) * 2));
   border-color: var(--color-magenta);
   color: var(--color-magenta);
 }
 
 .yellow {
-  left: calc(50% + calc(var(--radius) * 1.732));
+  left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
   border-color: var(--color-yellow);
   color: var(--color-yellow);
@@ -181,17 +181,17 @@ const signNumber = (number) => {
 }
 
 .red::after {
-  transform: rotate(90deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-red), var(--color-white));
 }
 
 .green::after {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(90deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-green), var(--color-white));
 }
 
 .blue::after {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-blue), var(--color-white));
 }
 
@@ -209,31 +209,32 @@ const signNumber = (number) => {
 }
 
 .cyan::before {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(90deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-cyan), var(--color-blue));
 }
 
 .cyan::after {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-cyan), var(--color-green));
 }
 
 .magenta::before {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-magenta), var(--color-red));
 }
 
 .magenta::after {
-  transform: rotate(90deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-magenta), var(--color-blue));
 }
+
 .yellow::before {
-  transform: rotate(90deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-yellow), var(--color-green));
 }
 
 .yellow::after {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(90deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-yellow), var(--color-red));
 }
 </style>
