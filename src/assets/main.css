@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Nova+Mono");
 
 :root {
-  --color-red: #ff8080;
-  --color-yellow: #ffff80;
-  --color-green: #80ff80;
-  --color-cyan: #80ffff;
-  --color-blue: #8080ff;
-  --color-magenta: #ff80ff;
-  --color-black: #202020;
-  --color-white: #e0e0e0;
+  --lightness: 70%;
+  --color-red: hsl(0, 100%, var(--lightness));
+  --color-yellow: hsl(60deg, 100%, var(--lightness));
+  --color-green: hsl(120deg, 100%, var(--lightness));
+  --color-cyan: hsl(180deg, 100%, var(--lightness));
+  --color-blue: hsl(240deg, 100%, var(--lightness));
+  --color-magenta: hsl(300deg, 100%, var(--lightness));
+  --color-black: hsl(0, 0%, 10%);
+  --color-white: hsl(0, 0%, 90%);
   font-size: min(3.75vw, 16px);
 }
 
