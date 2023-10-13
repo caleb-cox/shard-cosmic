@@ -1,38 +1,22 @@
 <script setup>
+import DieFace from "./DieFace.vue";
 defineProps(["rolls"]);
-defineEmits(["deleteCard"]);
-
-const signNumber = (number) => {
-  return number.toString().padStart(2, "+");
-};
 </script>
 
 <template>
-  <div class="card">
+  <div class="roll-card">
     <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
-    <div class="node red">
-      <div class="face">
-        <div v-for="_ in rolls[0]" class="pip"></div>
-      </div>
-    </div>
-    <div class="node yellow">{{ signNumber(rolls[0] - rolls[1]) }}</div>
-    <div class="node green">
-      <div class="face">
-        <div v-for="_ in rolls[1]" class="pip"></div>
-      </div>
-    </div>
-    <div class="node cyan">{{ signNumber(rolls[1] - rolls[2]) }}</div>
-    <div class="node blue">
-      <div class="face">
-        <div v-for="_ in rolls[2]" class="pip"></div>
-      </div>
-    </div>
-    <div class="node magenta">{{ signNumber(rolls[2] - rolls[0]) }}</div>
+    <div class="node red"><DieFace :pips="rolls[0]" /></div>
+    <div class="node yellow">{{ rolls[0] + rolls[1] }}</div>
+    <div class="node green"><DieFace :pips="rolls[1]" /></div>
+    <div class="node cyan">{{ rolls[1] + rolls[2] }}</div>
+    <div class="node blue"><DieFace :pips="rolls[2]" /></div>
+    <div class="node magenta">{{ rolls[2] + rolls[0] }}</div>
   </div>
 </template>
 
 <style scoped>
-.card {
+.roll-card {
   cursor: pointer;
   user-select: none;
   border: 0.25rem solid var(--color-white);
@@ -55,46 +39,7 @@ const signNumber = (number) => {
   justify-content: center;
 }
 
-.face {
-  display: grid;
-  gap: 0.125rem;
-  grid-template-columns: repeat(3, 0.375rem);
-  grid-template-rows: repeat(3, 0.375rem);
-  grid-template-areas:
-    "a . c"
-    "e g f"
-    "d . b";
-}
-
-.pip {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.pip:nth-child(2) {
-  grid-area: b;
-}
-
-.pip:nth-child(3) {
-  grid-area: c;
-}
-
-.pip:nth-child(4) {
-  grid-area: d;
-}
-
-.pip:nth-child(5) {
-  grid-area: e;
-}
-
-.pip:nth-child(6) {
-  grid-area: f;
-}
-
-.pip:nth-child(odd):last-child {
-  grid-area: g;
-}
+/* Node sizing */
 
 .red,
 .green,
@@ -112,14 +57,12 @@ const signNumber = (number) => {
   font-size: 4.25rem;
 }
 
+/* Node positioning and coloring */
+
 .red {
   left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-red);
-}
-
-.red .pip {
-  background-color: var(--color-red);
 }
 
 .green {
@@ -128,18 +71,10 @@ const signNumber = (number) => {
   border-color: var(--color-green);
 }
 
-.green .pip {
-  background-color: var(--color-green);
-}
-
 .blue {
   left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-blue);
-}
-
-.blue .pip {
-  background-color: var(--color-blue);
 }
 
 .cyan {
@@ -170,6 +105,8 @@ const signNumber = (number) => {
   color: var(--color-white);
 }
 
+/* Lines from RGB dice to the sum */
+
 .red::after,
 .green::after,
 .blue::after {
@@ -194,6 +131,8 @@ const signNumber = (number) => {
   transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-blue), var(--color-white));
 }
+
+/* Lines between RGB dice and CMY sums */
 
 .cyan::before,
 .cyan::after,

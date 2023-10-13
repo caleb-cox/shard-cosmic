@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from "vue";
-import Card from "./components/Card.vue";
+import RollCard from "./components/RollCard.vue";
 
 const rolls = ref([]);
 
-const resetCard = () => {
+const resetRollCard = () => {
   const roll = () => {
     return Math.ceil(Math.random() * 6);
   };
@@ -12,12 +12,12 @@ const resetCard = () => {
   rolls.value = [roll(), roll(), roll()];
 };
 
-resetCard();
+resetRollCard();
 </script>
 
 <template>
   <h1>Shard Cosmic</h1>
-  <Card :rolls="rolls" @click="resetCard()" />
+  <RollCard :rolls="rolls" @click="resetRollCard()" />
 </template>
 
 <style scoped>
