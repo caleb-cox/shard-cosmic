@@ -7,11 +7,11 @@ defineProps(["rolls"]);
   <div class="roll-card">
     <div class="node white">{{ rolls[0] + rolls[1] + rolls[2] }}</div>
     <div class="node magenta"><DieFace :pips="rolls[0]" /></div>
-    <div class="node blue">{{ rolls[0] + rolls[1] }}</div>
-    <div class="node cyan"><DieFace :pips="rolls[1]" /></div>
+    <div class="node red">{{ rolls[0] + rolls[1] }}</div>
+    <div class="node yellow"><DieFace :pips="rolls[1]" /></div>
     <div class="node green">{{ rolls[1] + rolls[2] }}</div>
-    <div class="node yellow"><DieFace :pips="rolls[2]" /></div>
-    <div class="node red">{{ rolls[2] + rolls[0] }}</div>
+    <div class="node cyan"><DieFace :pips="rolls[2]" /></div>
+    <div class="node blue">{{ rolls[2] + rolls[0] }}</div>
   </div>
 </template>
 
@@ -67,7 +67,7 @@ defineProps(["rolls"]);
 }
 
 .red {
-  left: calc(50% - calc(var(--radius) * 1.732));
+  left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
   border-color: var(--color-red);
   color: var(--color-red);
@@ -81,14 +81,14 @@ defineProps(["rolls"]);
 }
 
 .blue {
-  left: calc(50% + calc(var(--radius) * 1.732));
+  left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% - var(--radius));
   border-color: var(--color-blue);
   color: var(--color-blue);
 }
 
 .cyan {
-  left: calc(50% + calc(var(--radius) * 1.732));
+  left: calc(50% - calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-cyan);
 }
@@ -100,7 +100,7 @@ defineProps(["rolls"]);
 }
 
 .yellow {
-  left: calc(50% - calc(var(--radius) * 1.732));
+  left: calc(50% + calc(var(--radius) * 1.732));
   top: calc(50% + var(--radius));
   border-color: var(--color-yellow);
 }
@@ -121,7 +121,7 @@ defineProps(["rolls"]);
 }
 
 .red::before {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-red), var(--color-magenta));
 }
 
@@ -129,13 +129,14 @@ defineProps(["rolls"]);
   transform: rotate(90deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-red), var(--color-yellow));
 }
+
 .green::before {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-green), var(--color-yellow));
 }
 
 .green::after {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-green), var(--color-cyan));
 }
 
@@ -145,7 +146,7 @@ defineProps(["rolls"]);
 }
 
 .blue::after {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-blue), var(--color-magenta));
 }
 
@@ -162,7 +163,7 @@ defineProps(["rolls"]);
 }
 
 .cyan::after {
-  transform: rotate(210deg) translate(var(--translate));
+  transform: rotate(330deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-cyan), var(--color-white));
 }
 
@@ -170,9 +171,8 @@ defineProps(["rolls"]);
   transform: rotate(90deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-magenta), var(--color-white));
 }
-
 .yellow::after {
-  transform: rotate(330deg) translate(var(--translate));
+  transform: rotate(210deg) translate(var(--translate));
   background: linear-gradient(90deg, var(--color-yellow), var(--color-white));
 }
 </style>
