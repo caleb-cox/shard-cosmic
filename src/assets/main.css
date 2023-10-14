@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Nova+Mono");
 
 :root {
-  --lightness: 70%;
+  --lightness: 75%;
   --color-red: hsl(0, 100%, var(--lightness));
   --color-yellow: hsl(60deg, 100%, var(--lightness));
   --color-green: hsl(120deg, 100%, var(--lightness));
