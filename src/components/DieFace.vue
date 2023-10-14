@@ -50,15 +50,15 @@ defineProps(["pips"]);
   grid-area: g;
 }
 
-.red .pip {
-  background-color: var(--color-red);
+.cyan .pip {
+  background-color: var(--color-cyan);
 }
 
-.green .pip {
-  background-color: var(--color-green);
+.magenta .pip {
+  background-color: var(--color-magenta);
 }
 
-.blue .pip {
-  background-color: var(--color-blue);
+.yellow .pip {
+  background-color: var(--color-yellow);
 }
 </style>
