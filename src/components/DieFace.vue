@@ -11,9 +11,9 @@ defineProps(["pips"]);
 <style scoped>
 .face {
   display: grid;
-  gap: 0.125rem;
-  grid-template-columns: repeat(3, 0.375rem);
-  grid-template-rows: repeat(3, 0.375rem);
+  gap: 0.125em;
+  grid-template-columns: repeat(3, 0.25em);
+  grid-template-rows: repeat(3, 0.25em);
   grid-template-areas:
     "a . c"
     "e g f"
